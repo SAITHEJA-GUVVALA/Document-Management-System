@@ -1,59 +1,177 @@
-# Frontend
+# 📄 Document Management System (DMS)
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.23.
+## 📌 Project Description
 
-## Development server
+This is a **Document Management System (DMS)** built using the **MEAN stack (MongoDB, Express.js, Angular, Node.js)**.
+It allows users to upload, search, view, and manage documents with authentication and secure access control.
 
-To start a local development server, run:
+---
+
+## ✨ Features
+
+* 📤 Upload documents (PDF, images, files)
+* 🔍 Search documents using keywords
+* 👤 User profile management
+* 📄 View and edit documents
+* 📅 Track document upload dates
+* 🔐 Authentication & access control
+* 📁 Organized document storage system
+
+---
+
+## 🛠️ Tech Stack
+
+### Frontend
+
+* Angular
+* TypeScript
+* HTML
+* CSS
+
+### Backend
+
+* Node.js
+* Express.js
+
+### Database
+
+* MongoDB
+
+---
+
+## 📂 Project Structure
+
+```
+dms-project/
+│
+├── frontend/        # Angular frontend
+├── backend/         # Node.js backend
+├── screenshots/     # Application screenshots
+├── README.md
+```
+
+---
+
+## ⚙️ Setup Instructions
+
+### 1️⃣ Clone Repository
 
 ```bash
+git clone https://github.com/SAITHEJA-GUVVALA/Document-Management-System.git
+cd Document-Management-System
+```
+
+---
+
+### 2️⃣ Backend Setup
+
+```bash
+cd backend
+npm install
+node server.js
+```
+
+✅ Backend runs at:
+
+```
+http://localhost:8080
+```
+
+---
+
+### 3️⃣ Frontend Setup
+
+```bash
+cd ../frontend
+npm install
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+✅ Frontend runs at:
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
+```
+http://localhost:4200
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+---
 
-```bash
-ng generate --help
+### 4️⃣ Open Application
+
+```
+http://localhost:4200
 ```
 
-## Building
+---
 
-To build the project run:
+## 🔌 API Configuration
 
-```bash
-ng build
+Update backend URL in:
+
+```
+src/app/services/api.service.ts
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Example:
 
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
+```ts
+private baseUrl = 'http://localhost:8080/api';
 ```
 
-## Running end-to-end tests
+---
 
-For end-to-end (e2e) testing, run:
+## 🗄️ Database Setup
+
+Make sure **MongoDB is running locally**
+
+Start MongoDB:
 
 ```bash
-ng e2e
+mongod
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+Default URL:
 
-## Additional Resources
+```
+mongodb://localhost:27017
+```
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+---
+
+## 📦 Versions Used
+
+* Node.js v18+
+* Angular v15+
+* MongoDB v6+
+
+---
+
+## 📸 Screenshots
+
+Screenshots of the application are stored in a separate folder:
+
+
+## 🔐 Security Note
+
+Sensitive data (API keys, secrets) are stored using **environment variables (.env)** and are not exposed in the source code.
+
+---
+
+## 🚀 Future Enhancements
+
+* 📤 File sharing between users
+* ☁️ Cloud storage integration
+* 🔎 Advanced search filters
+* 📊 Admin dashboard
+
+---
+
+## 👨‍💻 Author
+
+**Saitheja Guvvala**
+GitHub: https://github.com/SAITHEJA-GUVVALA
+
+---
+
+## ⭐ Support
+
+If you like this project, give it a ⭐ on GitHub!
