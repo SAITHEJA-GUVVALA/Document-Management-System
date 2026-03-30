@@ -1,0 +1,19 @@
+<div class="edit-container">
+
+  <h2>Edit Profile</h2>
+
+  <div class="form-card">
+
+    <input [(ngModel)]="user.name" placeholder="Full Name">
+
+    <input [(ngModel)]="user.phone" placeholder="Phone Number">
+
+    <input [(ngModel)]="user.email" placeholder="Email">
+
+    <input [(ngModel)]="user.username" placeholder="Username">
+
+    <button (click)="save()">Save Changes</button>
+
+  </div>
+
+</div>

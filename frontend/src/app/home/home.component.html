@@ -1,0 +1,163 @@
+<div class="home-container">
+
+  <!-- ☰ HAMBURGER (ONLY ONE) -->
+  <div class="hamburger" *ngIf="!showSidebar" (click)="toggleSidebar()">
+    <i class="fa fa-bars"></i>
+  </div>
+
+  <!-- SIDEBAR -->
+  <div class="sidebar" [class.open]="showSidebar">
+
+    <!-- CLOSE BUTTON -->
+    <div class="close-btn" (click)="toggleSidebar()">
+      <i class="fa fa-times"></i>
+    </div>
+
+    <h3>DMS</h3>
+
+    <div class="menu-item" (click)="showAll()">📄 All Files</div>
+    <div class="menu-item" (click)="showFavorites()">⭐ Favorites</div>
+    <div class="menu-item" (click)="showDownloads()">📥 Downloads</div>
+
+  </div>
+
+  <!-- LOGO -->
+  <h1 class="logo">Document Management System</h1>
+
+  <!-- PROFILE -->
+  <div class="top-bar">
+    <div class="profile-icon" (click)="toggleProfileMenu()">
+      <i class="fa fa-user-circle"></i>
+    </div>
+  </div>
+
+  <!-- PROFILE MENU -->
+  <div class="profile-menu" *ngIf="showProfileMenu">
+
+    <p class="username">{{ user?.name }}</p>
+
+    <div class="menu-item" (click)="goToSettings()">
+      <i class="fa-solid fa-gear"></i> Account
+    </div>
+
+    <div class="menu-item logout" (click)="logout()">
+      <i class="fa-solid fa-right-from-bracket"></i>
+      Logout
+    </div>
+
+  </div>
+  
+
+  <!-- SEARCH + PLUS -->
+  <div class="search-wrapper">
+
+    <div class="search-row">
+
+      <!-- SEARCH BOX -->
+      <div class="search-box">
+        <i class="fa fa-search search-icon"></i>
+        <input [(ngModel)]="keyword" (input)="onSearch()" placeholder="Search documents...">
+      </div>
+
+      <!-- PLUS BUTTON -->
+      <div class="fab-inline" (click)="toggleMenu()">
+
+        <span class="plus" [class.open]="showMenu">+</span>
+
+        <div class="fab-menu" *ngIf="showMenu">
+          <div (click)="upload('doc')">📄 Upload Doc</div>
+          <div (click)="upload('image')">🖼 Upload Image</div>
+          <div (click)="upload('video')">🎥 Upload Video</div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="overlay" *ngIf="showSidebar" (click)="toggleSidebar()"></div>
+
+  <!-- RESULTS -->
+  <div class="results" *ngIf="documents.length > 0">
+
+    <table class="results-table">
+
+      <thead>
+        <tr>
+          <th (click)="sortBy('title')">Name ⬍</th>
+          <th (click)="sortBy('type')">Type ⬍</th>
+          <th (click)="sortBy('date')">Date ⬍</th>
+          <th>⭐</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let doc of documents">
+
+          <!-- NAME -->
+          <td class="name" (click)="openFile(doc.filePath, doc)">
+            <i [class]="getFileIconClass(doc.filePath)"></i>
+            {{ doc.title }}
+          </td>
+
+          <!-- TYPE -->
+          <td>
+            {{ getFileType(doc.filePath) }}
+          </td>
+
+          <!-- DATE -->
+          <td>
+            {{ doc.createdAt | date:'mediumDate' }}
+          </td>
+
+          <td>v{{ doc.version }}</td>
+
+  <button (click)="viewVersions(doc.groupId)">Versions</button>
+
+          <!-- ⭐ FAVORITE -->
+          <td (click)="$event.stopPropagation()">
+            <i 
+              class="fa-star"
+              [class.fa-solid]="doc.isFav"
+              [class.fa-regular]="!doc.isFav"
+              (click)="toggleFavorite(doc)">
+            </i>
+          </td>
+
+        </tr>
+      </tbody>
+
+    </table>
+
+  </div>
+
+  <!-- RECENT FILES -->
+<div class="recent-section" *ngIf="recentDocs.length > 0">
+
+  <h3>Recent</h3>
+
+  <div class="recent-list">
+
+    <div 
+      class="recent-card"
+      *ngFor="let doc of recentDocs"
+      (click)="openFile(doc.filePath, doc)"
+    >
+
+      <i [class]="getFileIconClass(doc.filePath)"></i>
+
+      <p>{{ doc.title }}</p>
+
+    </div>
+
+  </div>
+
+</div>
+
+  <!-- NO RESULT -->
+  <p *ngIf="documents.length === 0 && keyword" class="no-result">
+    No documents found
+  </p>
+
+</div>

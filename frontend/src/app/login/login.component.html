@@ -1,0 +1,61 @@
+<div class="auth-container">
+
+<h1 class="app-title">Document Management System</h1>
+  <div class="auth-card">
+
+    <h2>{{ isLogin ? 'Log in' : 'Create Account' }}</h2>
+    <p class="subtitle">
+      {{ isLogin ? 'Enter your email and password to securely access your account' 
+                 : 'Create a new account to get started' }}
+    </p>
+
+    <!-- NAME -->
+    <div class="input-box" *ngIf="!isLogin">
+      <i class="fa fa-user"></i>
+      <input [(ngModel)]="name" placeholder="Name">
+    </div>
+
+    <!-- EMAIL -->
+    <div class="input-box">
+      <i class="fa fa-envelope"></i>
+      <input [(ngModel)]="email" placeholder="Email address">
+    </div>
+
+    <!-- PASSWORD -->
+    <div class="input-box">
+      <i class="fa fa-lock"></i>
+      <input type="password" [(ngModel)]="password" placeholder="Password">
+      <i class="fa fa-eye-slash"></i>
+    </div>
+
+    <!-- REMEMBER + FORGOT -->
+    <div class="row" *ngIf="isLogin">
+      <label><input type="checkbox"> Remember me</label>
+      <span class="link" (click)="goToForgot()">Forgot Password</span>
+    </div>
+
+    <!-- BUTTON -->
+    <button class="main-btn" (click)="submit()">
+      {{ isLogin ? 'Login' : 'Create Account' }}
+    </button>
+
+    <!-- SWITCH -->
+    <p class="switch">
+      {{ isLogin ? "Don't have an account?" : "Already have an account?" }}
+      <span (click)="isLogin = !isLogin">
+        {{ isLogin ? 'Sign Up here' : 'Sign In here' }}
+      </span>
+    </p>
+
+    <hr>
+
+    <p class="social-text">Or </p>
+
+    <button class="google-btn" (click)="googleLogin()">
+  <img src="https://developers.google.com/identity/images/g-logo.png" class="google-icon">
+  Continue with Google
+</button>
+
+  </div>
+
+</div>

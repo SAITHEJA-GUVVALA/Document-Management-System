@@ -1,0 +1,61 @@
+.upload-card {
+  width: 400px;
+  max-width: 90%;
+  padding: 20px;
+}
+
+/* MOBILE */
+@media (max-width: 480px) {
+  .upload-card {
+    width: 95%;
+    padding: 15px;
+  }
+}
+
+.file-box {
+  width: 100%;
+  padding: 20px;
+  border: 2px dashed #ccc;
+  text-align: center;
+}
+
+/* MOBILE */
+@media (max-width: 480px) {
+  .file-box {
+    padding: 15px;
+  }
+}
+
+.file-box {
+  width: 100%;
+  padding: 20px;
+  border: 2px dashed #ccc;
+  text-align: center;
+}
+
+/* MOBILE */
+@media (max-width: 480px) {
+  .file-box {
+    padding: 15px;
+  }
+}
+
+.fab-inline {
+  position: relative;
+}
+
+@media (max-width: 480px) {
+  .fab-inline {
+    align-self: flex-end;
+  }
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);
+  z-index: 1500;
+}

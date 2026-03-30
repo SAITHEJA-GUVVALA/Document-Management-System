@@ -1,0 +1,60 @@
+<div class="upload-container">
+
+  <div class="upload-card">
+
+    <h2>Upload Document</h2>
+
+    <!-- DRAG & DROP BOX -->
+    <div 
+      class="file-box"
+      (dragover)="onDragOver($event)"
+      (dragleave)="onDragLeave($event)"
+      (drop)="onDrop($event)"
+      [class.dragging]="isDragging"
+    >
+
+      <input type="file" multiple (change)="onFileSelect($event)">
+
+      <p *ngIf="files.length === 0">
+        Drag & Drop files here or Click to Upload
+      </p>
+
+      <!-- FILE LIST -->
+      <ul *ngIf="files.length > 0">
+        <li *ngFor="let f of files">
+          📄 {{ f.name }}
+        </li>
+      </ul>
+
+    </div>
+
+    <!-- TITLE -->
+    <input 
+      type="text"
+      [(ngModel)]="title"
+      placeholder="Enter Title"
+      class="input"
+    >
+
+    <!-- TAGS -->
+    <input 
+      type="text"
+      [(ngModel)]="tags"
+      placeholder="Enter tags (comma separated)"
+      class="input"
+    >
+
+    <!-- VISIBILITY -->
+    <select [(ngModel)]="visibility" class="input">
+      <option value="private">🔒 Private</option>
+      <option value="public">🌍 Public</option>
+    </select>
+
+    <!-- BUTTON -->
+    <button (click)="upload()" class="upload-btn">
+      Upload
+    </button>
+
+  </div>
+
+</div>
